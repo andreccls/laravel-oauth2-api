@@ -1,0 +1,16 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+
+parameters:
+    level: 8
+    paths:
+        - app
+        - bootstrap
+        - database
+        - routes
+        - tests
+    ignoreErrors:
+        # env() is read in bootstrap/app.php on purpose: config is not loaded yet at that point.
+        - { identifier: larastan.noEnvCallsOutsideOfConfig, path: bootstrap/app.php }
+        # Test helpers wrap Laravel's generic TestResponse; spelling the generics out adds nothing.
+        - { identifier: missingType.generics, path: tests/* }
