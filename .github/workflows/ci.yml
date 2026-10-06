@@ -15,7 +15,7 @@ jobs:
         run: make lint
       - name: Tests + coverage (fails below 100% of lines)
         run: make coverage
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: coverage-report
