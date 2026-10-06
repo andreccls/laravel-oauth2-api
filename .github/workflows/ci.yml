@@ -1,0 +1,40 @@
+name: CI
+
+# Everything runs through the Makefile, i.e. in the same containers used locally.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Lint (Pint + PHPStan level 8)
+        run: make lint
+      - name: Tests + coverage (fails below 100% of lines)
+        run: make coverage
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage-report
+          path: coverage/html
+      - name: Tests against MySQL 8.4
+        run: make test-mysql
+
+  smoke:
+    # Real stack: Octane + MySQL + Redis, then the whole OAuth2 walkthrough with curl.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install jq
+        run: sudo apt-get install -y jq
+      - name: make demo
+        run: make demo
+      - name: Logs on failure
+        if: failure()
+        run: docker compose logs --no-color
+      - name: Down
+        if: always()
+        run: make down
