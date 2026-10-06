@@ -1,0 +1,83 @@
+# 2026-10-06T14:04:48Z  host: Apple M3, cpus=8
+# docker: cpus=8 mem=8218251264
+# endpoint: GET /api/tasks?per_page=20 (Bearer JWT, 30 tasks x 2 items, 20 returned)  n=10000 c=16 runs=5 warmup=2000
+## octane run 1
+Complete requests:      10000
+Failed requests:        0
+Requests per second:    586.76 [#/sec] (mean)
+Time per request:       27.268 [ms] (mean)
+  50%     22
+  95%     50
+  99%     77
+## fpm run 1
+Complete requests:      10000
+Failed requests:        0
+Requests per second:    368.14 [#/sec] (mean)
+Time per request:       43.461 [ms] (mean)
+  50%     34
+  95%     88
+  99%    141
+## octane run 2
+Complete requests:      10000
+Failed requests:        0
+Requests per second:    447.54 [#/sec] (mean)
+Time per request:       35.751 [ms] (mean)
+  50%     28
+  95%     75
+  99%    138
+## fpm run 2
+Complete requests:      10000
+Failed requests:        0
+Requests per second:    365.13 [#/sec] (mean)
+Time per request:       43.820 [ms] (mean)
+  50%     35
+  95%     84
+  99%    160
+## octane run 3
+Complete requests:      10000
+Failed requests:        0
+Requests per second:    534.55 [#/sec] (mean)
+Time per request:       29.932 [ms] (mean)
+  50%     25
+  95%     51
+  99%     81
+## fpm run 3
+Complete requests:      10000
+Failed requests:        0
+Requests per second:    361.11 [#/sec] (mean)
+Time per request:       44.308 [ms] (mean)
+  50%     35
+  95%     82
+  99%    159
+## octane run 4
+Complete requests:      10000
+Failed requests:        0
+Requests per second:    505.53 [#/sec] (mean)
+Time per request:       31.650 [ms] (mean)
+  50%     26
+  95%     61
+  99%     96
+## fpm run 4
+Complete requests:      10000
+Failed requests:        0
+Requests per second:    338.47 [#/sec] (mean)
+Time per request:       47.271 [ms] (mean)
+  50%     39
+  95%     91
+  99%    178
+## octane run 5
+Complete requests:      10000
+Failed requests:        0
+Requests per second:    390.26 [#/sec] (mean)
+Time per request:       40.999 [ms] (mean)
+  50%     34
+  95%     73
+  99%    137
+## fpm run 5
+Complete requests:      10000
+Failed requests:        0
+Requests per second:    302.05 [#/sec] (mean)
+Time per request:       52.971 [ms] (mean)
+  50%     43
+  95%    101
+  99%    163
