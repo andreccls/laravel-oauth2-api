@@ -10,7 +10,7 @@ jobs:
   quality:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Lint (Pint + PHPStan level 8)
         run: make lint
       - name: Tests + coverage (fails below 100% of lines)
@@ -27,7 +27,7 @@ jobs:
     # Real stack: Octane + MySQL + Redis, then the whole OAuth2 walkthrough with curl.
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Install jq
         run: sudo apt-get install -y jq
       - name: make demo
